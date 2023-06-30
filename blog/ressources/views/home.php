@@ -1,9 +1,9 @@
 <?php
-$metaTitle = 'Page d\'accueil';  // changez ceci pour chaque page
-$metaDescription = 'Description de la page d\'accueil';  // changez ceci pour chaque page
-include('header.php');
+$metaTitle = 'CV Monique';
+$metaDescription = 'Page dediée au CV de Monique Silva, développeur web';
+include('ressources/views/layouts/header.php');
 ?>
 <main>
-    <!-- Le contenu de votre page ici -->
+    <h1>Olá mundo cruel</h1>
 </main>
-<?php include('footer.php'); ?>
+<?php include('ressources/views/layouts/footer.php'); ?>

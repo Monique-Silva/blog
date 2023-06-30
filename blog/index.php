@@ -8,15 +8,17 @@
 <body>
 
 <?php
+//pour tester si le line marche avec action: http://blog.local/index.php?action=nomedulien
 echo "Bienvenue sur le blog";
 # == Frontcontroller == #
 $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
 ## Ici je stock toutes la/les requettes GET['action'] dans la variable $action
 $routes = [
     # Crée un tableau un tableau associatif dans lequel je stock toutes les root possible avec une clé définit
-    "home" => "home.php",
-    "contact" => "contact.php",
-    "about" => "about.php"
+    "home" => "ressources/views/home.php",
+    "contact" => "ressources/views/contact.php",
+    "about" => "ressources/views/about.php",
+    "/" => "app/controllers/homeController.php"
     // ajouter des 'clés' => 'routes' routes ici
 ];
  if(!array_key_exists($action,$routes)){
@@ -31,15 +33,7 @@ $routes = [
     include $page;
  }
 
- try 
-{
-    $db = new PDO("mysql:host=blog.local;dbname=blog", "Monique-Silva", "2712"); //pour se conecter à la base de données "blog"
-}
-catch (Exception $e)
-{
-    die("Erreur : " . $e->getMessage());
-}
-
+ include ('config/database.php');
  ?>
 
 </body>
