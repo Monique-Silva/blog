@@ -21,6 +21,7 @@ if (!isset($_SESSION['countViewPage'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $metaTitle ?></title>
     <meta name="description" content="<?= $metaDescription ?>">
+    <link rel="stylesheet" href="ressouces/css/style.css">
 </head>
 <body>
 <header>

@@ -62,11 +62,20 @@ $formData = filter_input_array(INPUT_POST, $filters);
         <div class="col mb-3">
           <input type="text" class="form-control" placeholder="Nom" name="lastname">
         </div>
+        <div class="form-error">
+            <?= $formErrors['lastname'] ?? ''; ?>
+        </div>
           <div class="col mb-3">
               <input type="text" class="form-control" placeholder="Prénom" name="firstname">
           </div>
+          <div class="form-error">
+            <?= $formErrors['firstname'] ?? ''; ?>
+        </div>
           <div class="form-group mb-3">
               <input type="email" class="form-control" id="e-mail" placeholder="E-mail"  name="email">
+        </div>
+        <div class="form-error">
+            <?= $formErrors['email'] ?? ''; ?>
         </div>
         <div class="form-group mb-3">
               <input type="radio" id="Proposition d'emploi" name="reason" value="Proposition d'emploi">
@@ -79,6 +88,9 @@ $formData = filter_input_array(INPUT_POST, $filters);
         <div class="form-group mb-4">
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Message" name="message"></textarea>
         </div>
+        <div class="form-error">
+            <?= $formErrors['message'] ?? ''; ?>
+        </div>
         <div class="text-center mb-5">
           <button type="submit" class="btn btn-success" name="submit">Envoyer</button>
         </div>
@@ -86,7 +98,8 @@ $formData = filter_input_array(INPUT_POST, $filters);
     </div>
   </main>
 <!--    Noté la syntaxe alternative de php utilisé dans les tempaltes cf @https://www.php.net/manual/fr/control-structures.alternative-syntax.php-->
-    <?php if (!empty($formErrors)): ?>
+
+<?php if (!empty($formErrors)): ?>
         <ul>
             <?php foreach ($formErrors as $field => $error): ?>
                 <li><strong><?= ucfirst($field) ?>:</strong> <?= $error ?></li>
@@ -96,3 +109,4 @@ $formData = filter_input_array(INPUT_POST, $filters);
 </main>
 
 <?php include ('ressources/views/layouts/footer.php'); ?>
+
