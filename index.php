@@ -1,22 +1,24 @@
+<body>
 <?php
+include ("config/database.php"); //include sur index, garanti que la database est inclus partout où il faut
 session_start(); // Commence ou continue une session
 // pour vérifier les bugs:
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 //pour tester si le line marche avec action: http://blog.local/index.php?action=nomedulien
 
 # == Frontcontroller == #
-$action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
+$action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 ## Ici je stock toutes la/les requettes GET['action'] dans la variable $action
 $routes = [
     # Crée un tableau un tableau associatif dans lequel je stock toutes les root possible avec une clé définit
-    "home" => "ressources/views/home.tpl.php",
-    "contact" => "ressources/views/contact.php",
-    "about" => "ressources/views/about.php",
-    "/" => "app/controllers/homeController.php"
-    // ajouter des 'clés' => 'routes' routes ici
+    "home" => "app/controllers/homeController.php",
+    "/" => "app/controllers/homeController.php",
+    "blogpost" => "app/controllers/blogPostController.php",
+    "blogpostdelete"=> "app/controllers/blogPostDeleteController.php",
+    "blogpostupdate"=> "app/controllers/blogPostCreateController.php",
 ];
 
 if(!array_key_exists($action,$routes)){
@@ -34,9 +36,5 @@ if ($action === null) {
     $action = $routes[$action];
     include $action;
  }
- 
- include ("config/database.php");
  ?>
-
 </body>
-</html>
