@@ -1,7 +1,4 @@
 <div>
-    <h1>Derniers articles</h1>
-</div>
-<div>
     <a href="/index.php?action=blogpostupdate&id=<?= $numArticle ?>">Modifier</a>
     <a href="/index.php?action=blogpostdelete&id=<?= $numArticle ?>">Suprimer</a>
     <h2>

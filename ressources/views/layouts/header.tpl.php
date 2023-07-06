@@ -1,10 +1,8 @@
 <?php
-
 if (!isset($_SESSION['dateFirstVisit'])) {
     // Si c'est la première visite, stocker la date actuelle
     $_SESSION['dateFirstVisit'] = date("Y-m-d H:i:s");
 }
-
 if (!isset($_SESSION['countViewPage'])) {
     // Initialise le compteur de pages vues s'il n'existe pas encore
     $_SESSION['countViewPage'] = 0;
@@ -13,6 +11,7 @@ if (!isset($_SESSION['countViewPage'])) {
     $_SESSION['countViewPage']++;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

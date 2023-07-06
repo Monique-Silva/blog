@@ -1,24 +1,19 @@
-!DOCTYPE html>
-<html>
 <head>
-    <title>Contact form</title>
+    <title>New article form</title>
     <link href="/ressources/css/styleform.css" rel="stylesheet">
 </head>
 <body>
 <div class="main-block">
-    <form action="http://blog.local/?action=blogpostupdate&id=<?php $numArticle?>">
-        <h1>Modifier l'article</h1>
-        <div class="info">
-            <input class="title" type="text" name="title" placeholder="Title">
-            <input type="text" name="content" placeholder="Content">
-            <input type="text" name="publishdate" placeholder="Date de publication">
-            <input type="text" name="lastdate" placeholder="Disponible jusqu'à">
-            <input type="text" name="rating" placeholder="Rating">
-            <input type="text" name="author" placeholder="Auteur">
-        </div>
-       </div>
-        <button type="submit" href="/">Submit</button>
+    <form action="?action=blogpostcreate" method="POST">
+        <h1>Créer un nouveau article</h1>
+            <input class="title" type="text" name="title" placeholder="Titre de l'article">
+            <input type="text" name="content" placeholder="Contenu">
+            <input type="date" name="publishdate" value="2023-01-07" placeholder="Date de publication">
+            <input type="date" name="lastdate" value="2024-01-07" placeholder="Disponible jusqu'à">
+            <input type="number" name="importdegree" placeholder="Rating">
+            <input type="number" name="autors_id" placeholder="ID de l'auteur">
+            <button type="submit" href="/">Submit</button>
+</div>
     </form>
 </div>
 </body>
-</html>

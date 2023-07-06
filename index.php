@@ -1,4 +1,3 @@
-<body>
 <?php
 include ("config/database.php"); //include sur index, garanti que la database est inclus partout où il faut
 session_start(); // Commence ou continue une session
@@ -18,7 +17,8 @@ $routes = [
     "/" => "app/controllers/homeController.php",
     "blogpost" => "app/controllers/blogPostController.php",
     "blogpostdelete"=> "app/controllers/blogPostDeleteController.php",
-    "blogpostupdate"=> "app/controllers/blogPostCreateController.php",
+    "blogpostcreate"=> "app/controllers/blogPostCreateController.php",
+    "blogpostupdate"=> "app/controllers/blogPostModifyController.php",
 ];
 
 if(!array_key_exists($action,$routes)){
@@ -37,4 +37,3 @@ if ($action === null) {
     include $action;
  }
  ?>
-</body>

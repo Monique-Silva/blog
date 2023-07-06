@@ -30,29 +30,42 @@ function getCommentsByBlogPost($database, int $numArticle): array {
     $commentsByBlogPost = $statement->fetchAll();
     return $commentsByBlogPost;
 }
-function createBlogPost ($database, $newArticle): array {
-    $blogQuery = file_get_contents("database/createArticle.sql");
-    $statement =  $database->prepare($blogQuery);
-    //ação para criar novo artigo $statement->
+function createBlogPost ($database, string $title, string $content, string $publishdate, string $lastdate, int $importdegree, int $autors_id): array {
+    $blogQuery = file_get_contents("database/createBlogPost.sql");
+    $statement = $database->prepare($blogQuery);
+    $statement->bindValue(":title", $title, PDO::PARAM_STR);
+    $statement->bindValue(":content", $content, PDO::PARAM_STR);
+    $statement->bindValue(":publishdate", $publishdate, PDO::PARAM_STR);
+    $statement->bindValue(":lastdate", $lastdate, PDO::PARAM_STR);
+    $statement->bindValue(":importdegree", $importdegree, PDO::PARAM_STR);
+    $statement->bindValue(":autors_id", $autors_id, PDO::PARAM_INT);
     $statement->execute();
-    echo x;
+    $newBlogPost = $statement->fetchAll();
+    return $newBlogPost;
 }
 
-/*
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-  VALUES ('John', 'Doe', 'john@example.com')";
-    // use exec() because no results are returned
-    $conn->exec($sql);
-    echo "New record created successfully";
-} catch(PDOException $e) {
-    echo $sql . "<br>" . $e->getMessage();
+function getAllInfoFromArticles ($database, int $numArticle): array {
+    $blogQuery = file_get_contents("database/getAllInfoFromArticles.sql");
+    $statement = $database->prepare($blogQuery);
+    $statement->bindValue("id", $numArticle, PDO::PARAM_INT);
+    $statement->execute();
+    $AllInfoFromArticle = $statement->fetch();
+    return $AllInfoFromArticle;
 }
-*/
-
+function updateBlogPost ($database, $numArticle, $title, $content, $publishdate, $lastdate, $importdegree, $autors_id): array {
+    $blogQuery = file_get_contents("database/updateBlogPost.sql");
+    $statement = $database->prepare($blogQuery);
+    $statement->bindValue("id", $numArticle, PDO::PARAM_INT);
+    $statement->bindValue(":title", $title, PDO::PARAM_STR);
+    $statement->bindValue(":content", $content, PDO::PARAM_STR);
+    $statement->bindValue(":publishdate", $publishdate, PDO::PARAM_STR);
+    $statement->bindValue(":lastdate", $lastdate, PDO::PARAM_STR);
+    $statement->bindValue(":importdegree", $importdegree, PDO::PARAM_STR);
+    $statement->bindValue(":autors_id", $autors_id, PDO::PARAM_INT);
+    $statement->execute();
+    $updateBlogPost = $statement->fetchAll();
+    return $updateBlogPost;
+}
 function deleteBlogPost ($database, int $numArticle): void {
     $blogQuery = file_get_contents("database/deleteBlogPost.sql");
     $statement = $database->prepare($blogQuery);

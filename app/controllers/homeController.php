@@ -9,6 +9,3 @@ include("ressources/views/layouts/footer.tpl.php");
 //var_dump(getLastBlogPosts($db));
 ?>
 
-
-//passos: criar o link dos sites, adicionar o id no index com a função get_id(), criar a landing page de cada artigo, organizar o estilo css, etc.
-

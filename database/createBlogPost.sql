@@ -1,3 +1,3 @@
 INSERT INTO
-    articles (id, title, content, publishdate, lastdate, importdegree, autors_id)
-<!--- VALUES ('John', 'Doe', 'john@example.com')";
+    articles (title, content, publishdate, lastdate, importdegree, autors_id)
+VALUES (:title, :content, :publishdate, :lastdate, :importdegree, :autors_id);

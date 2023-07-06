@@ -1,4 +1,4 @@
 DELETE FROM
     articles
 WHERE
-    id = :id
+    articles.id = :id

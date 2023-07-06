@@ -1,5 +1,6 @@
 <div>
     <h1>Bienvenue au monde du sport</h1>
+    <h3><a href="?action=blogpostcreate">Créer un nouveau article</a></h3>
 </div>
 <div>
 <?php if(count($lastArticles) === 0):
@@ -11,9 +12,9 @@
         <?php echo $article["title"] ?>
         </h2>
         </a>
-        <h3>
+        <p>
         <?php echo $article["pseudoname"] ?>
-        </h3>
+        </p>
     <?php endforeach;
 endif; ?>
 </div>
